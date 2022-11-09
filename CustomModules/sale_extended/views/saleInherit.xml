@@ -1,0 +1,91 @@
+<odoo>
+	
+
+	<record id="sal_quote" model="ir.ui.view">
+        <field name="name">sale.order.form</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale.view_order_form"/>
+        <field name="arch" type="xml">
+            <!-- <xpath expr="//field[@name='payment_term_id']" position="after">
+            	<field name="custumber"/>
+            </xpath>
+             -->
+            <!-- <xpath expr="//field[@name='currency_id']" position="replace">
+                <field name='price_for_replace'/>
+            </xpath> -->
+
+
+
+            <xpath expr="//page[@name='customer_signature']" position="after">
+                <page string="newNote">
+                    <form>
+                        <group>
+                            <field name="price"/>
+                        </group>
+                    </form>
+                </page>                          
+            </xpath>
+            
+            <xpath expr="//field[@name='state']" position="attributes">
+                <attribute name="statusbar_visible">draft,sent,sale,to_approve</attribute>
+
+            </xpath>
+
+
+            <xpath expr="//button[@name='preview_sale_order']" position="before">
+                <!-- <div class="oe_button_box" name="button_box" attrs="{'invisible':[('price','=',0)]}"> -->
+
+                    <button name="get_price" type="object" icon="fa-credit-card" class="oe_stat_button" attrs="{'invisible':[('price','=',0)]}">
+                        
+                        <div class="o_stat_info ">
+                            <field name="price" class="o_stat_value"/>
+                            <span name="o_stat_text">Price</span>
+                        </div>
+
+                    </button>
+                <!-- </div>            -->
+                <!-- <p>hello</p>      -->
+            </xpath>
+
+
+
+            <xpath expr="//group[@name='partner_details']" position="inside">
+            	<field name="mobile"/>
+            </xpath>
+
+            
+
+
+            <!-- <xpath expr="//group[@name='partner_details']" position="inside">
+                <field name="customer"/>
+            </xpath>
+             -->
+
+
+            <!-- <xpath expr="//field[@name='currency_id']" position="attributes">
+                <attribute name="attrs">{'invisible':[('mobile','=',98)]}</attribute>             
+            </xpath> -->
+           
+            <!--  <xpath expr="//field[@name='currency_id']" position="attributes">
+                <attribute name="attrs">{'invisible':[('payment_term_id','=','15 Days')]}</attribute>             
+            </xpath> -->
+
+
+            <!-- <xpath expr="//field[@name='currency_id']" position="attributes">
+                <attribute name="invisible">0</attribute>             
+            </xpath> -->
+            <!-- <xpath expr="//field[@name='team_id']" position="attributes">
+                <attribute name="attrs">{'invisible': [('sale_price', '=', 100)]}</attribute>
+            </xpath> -->
+
+           </field>     
+        
+    </record>
+
+    
+
+    
+
+
+
+</odoo>

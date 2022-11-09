@@ -1,0 +1,33 @@
+<odoo>
+<record id="action_export_sale" model="ir.actions.act_window">
+            <field name="name">Quotation</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">export.sale</field>
+            <field name="view_mode" >tree,form</field>
+        </record>
+
+    <menuitem id="menu_export_sales" 
+              name='Export Sales' 
+              parent="sale.sale_order_menu"
+              action="action_wizard_getQuotations"/>
+
+
+      <record id="action_cancelled_orders" model="ir.actions.act_window">
+            <field name="name">Cancelled Orders</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">sale.order</field>
+            
+            <field name="domain">[('state','=', ('cancel'))]</field>
+            
+        </record>
+
+
+    <menuitem id="menu_canceled_orders" 
+              name='Cancelled Orders' 
+              parent="sale.sale_order_menu"
+              action="action_cancelled_orders"/>
+
+
+
+
+</odoo>              

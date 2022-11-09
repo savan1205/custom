@@ -1,0 +1,49 @@
+<odoo>
+        <record id="city_form" model="ir.ui.view">
+            <field name="name">cities.cities</field>
+            <field name="model">cities.cities</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <group>
+                            <field name="city" string="City"/>                     
+                             <field name="state_id" string="State"/>
+                        </group>    
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+
+
+            <!--        Tree   View        -->
+
+
+        <record id="city_tree" model="ir.ui.view">
+            <field name="name">City</field>
+            <field name="model">cities.cities</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="city" string="City"/>                     
+                    <field name="state_id" string="State"/>
+                </tree>
+            </field>
+        </record>
+
+
+        <!--        Action           -->
+
+        <record id="action_city" model="ir.actions.act_window">
+            <field name="name">city</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">cities.cities</field>
+            <field name="view_mode" >tree,form</field>
+          
+            
+        </record>
+
+        <!-- <menuitem id="main_menu_city" 
+              name='City' 
+              action="action_city"           
+              sequence='0'/> -->
+</odoo>

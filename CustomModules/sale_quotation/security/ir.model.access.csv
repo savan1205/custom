@@ -1,0 +1,11 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+
+sale_quotation.access_export_sale,access_export_sale,sale_quotation.model_export_sale,base.group_user,1,1,1,1
+
+sale_quotation.access_quotation_wizard,access_quotation_wizard,sale_quotation.model_quotation_wizard,base.group_user,1,1,1,1
+
+sale_quotation.access_quotation_fill,access_quotation_fill,sale_quotation.model_quotation_fill,base.group_user,1,1,1,1
+
+sale_quotation.access_fill_wizard,access_fill_wizard,sale_quotation.model_fill_wizard,base.group_user,1,1,1,1
+
+sale_quotation.access_quotation_data,access_quotation_data,sale_quotation.model_quotation_data,base.group_user,1,1,1,1

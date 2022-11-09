@@ -1,0 +1,30 @@
+<odoo>
+    <data>
+        <template id="report_sale_inherit_invoice_edit" inherit_id="account.report_invoice_document">
+            <xpath expr="//p[@name='payment_communication']" position="replace">
+            <p></p>
+             
+            </xpath> 
+
+            <xpath expr="//div[@class='page']" position="inside">
+                <br/><br/><br/><br/>
+                
+                <div class="row mt-4 mb-4">
+                    <div class="col-auto col-3 mw-100 mb-2" name="prepared_by">
+                        <strong>Prepared By:</strong>
+                    </div>
+
+                    <div class="col-auto col-3 mw-100 mb-2"  name="received_by">
+                        <strong>Received By:</strong>
+                    </div>
+                </div>
+            </xpath>
+
+           
+             <!-- <attribute name="invisible">1</attribute> -->
+             <!-- <p t-if="o.move_type in ('out_invoice', 'in_refund') and o.payment_reference" name="payment_communication">
+                        <b><span t-field="o.payment_reference"/></b>
+                    </p> -->
+        </template>
+    </data>
+</odoo>        

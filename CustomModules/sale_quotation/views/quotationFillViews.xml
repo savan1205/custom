@@ -1,0 +1,16 @@
+<odoo>
+	
+
+	<record id="action_quotation_fill" model="ir.actions.act_window">
+            <field name="name">Quotation Fill</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">quotation.fill</field>
+            <field name="view_mode" >tree,form</field>
+        </record>
+
+    <menuitem id="menu_sale_quotation_fill" 
+              name='Quotation Fill' 
+              parent="sale.sale_order_menu"
+              action="action_wizard_Quotations"/>
+
+</odoo>

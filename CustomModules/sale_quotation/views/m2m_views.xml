@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+        <record id="res_config_view_form_sale" model="ir.ui.view">
+            <field name="name">p</field>
+            <field name="model">sale.order</field>
+            <field name="priority" eval="0"/>
+            <field name="inherit_id" ref="sale.view_order_form"/>
+            <field name="arch" type="xml">
+                
+                <xpath expr="//field[@name='payment_term_id']" position="after">
+                    <field name="partner_ids" widget="many2many_tags"/> 
+                </xpath>
+
+                
+
+                <xpath expr="//button[@id='action_confirm']" position="after">
+                    <button name="insert_tags" string="Add Partners" type="object"/>
+                    
+                    
+                </xpath>
+
+                <xpath expr="//field[@name='partner_ids']" position="after">
+                    <field name="product_id" />
+                    <field name="quantity" />
+                </xpath>
+
+                
+            </field>
+        </record>
+
+
+
+
+
+
+
+        <!-- <record id="res_quote_mail_inherit" model="ir.ui.view">
+            <field name="name">p</field>
+            <field name="model">sale.order</field>
+            <field name="priority" eval="0"/>
+            <field name="inherit_id" ref="sale.email_template_edi_sale"/>
+            <field name="arch" type="xml">
+                
+                <xpath expr="//field[@name='body_html']" position="after">
+                    
+                    <div style="margin: 0px; padding: 0px;">
+                        <p style="margin: 0px; padding: 0px; font-size: 13px;">
+                            <br/><br/>
+                            Hello World    
+                        </p>
+                    </div>
+            
+                </xpath>
+            </field>
+        </record> -->
+    </odoo>

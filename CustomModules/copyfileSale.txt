@@ -1,0 +1,70 @@
+source /usr/share/virtualenvwrapper/virtualenvwrapper.sh
+
+
+
+python3 odoo-bin --addons-path=addons/,/home/odoo/Desktop/SaleExtended --xmlrpc-port 5005 -d v15sale -u sale_extended
+
+
+python3 odoo-bin --addons-path=addons/,/home/odoo/Desktop/CustomModules --xmlrpc-port 5008 -d v15saleQuote -u sale_quotation
+ 
+
+
+from odoo import fields, models,api,_
+from datetime import date
+import csv 
+
+
+class Date(models.TransientModel):
+    _name = "date.check" #This will be the table name.
+    _description = "This is Sale export"
+    
+
+    start_date=fields.Date(string="Start Date",required=True)
+    end_date=fields.Date(string="End Date",required=True)
+
+
+    def check_date(self):
+            print("wizard button clicked")
+            res=self.env['sale.order'].search([('state','=','draft')])
+            header = ['Sr.no','Customer Name','Quotation Date','Sales Person','total']
+            sr_no=[]
+            cust_name=[]
+            quote=[]
+            sale_person=[]
+            total=[]
+            main_data=[]
+            srno=0
+            f = open('/home/odoo/Desktop/Export_Sale/export_sale/my.csv', 'w')
+            writer = csv.writer(f)
+            writer.writerow(header)
+            
+            for records in res:
+                srno+=1
+
+               
+                if records.date_order.date() < self.end_date and records.date_order.date() > self.start_date:
+                    cust_name.append(records.partner_id.name) 
+                    quote.append(records.date_order.date()) 
+                    sale_person.append(records.user_id.name)
+                    total.append(records.amount_total)
+                    sr_no.append(srno)
+                   
+
+            # main_data.append(cust_name)
+            # main_data.append(quote)
+            # main_data.append(sale_person)  
+            # main_data.append(total)
+            aa=tuple(sr_no)  
+            a=tuple(cust_name)
+            b=tuple(quote)
+            c=tuple(sale_person)
+            d=tuple(total)
+
+            main=list(zip(aa,a,b,c,d))
+            print("__________________",main)           
+            writer.writerows(main)       
+            # #writer.writerows(quote)       
+            # writer.writerows(sale_person)       
+
+            f.close()
+            
